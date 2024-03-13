@@ -1,5 +1,6 @@
 const express = require('express')
 const errorHandler = require('../middlewares/errorHandler')
+const { authentication } = require('../middlewares/authenticate')
 const router = express.Router()
 
 router.get('/', (req, res) => {
@@ -7,8 +8,12 @@ router.get('/', (req, res) => {
 })
 
 router.use('/auth', require('./auth'))
-router.use('/auth', require('./pub'))
+router.use('/pub', require('./pub'))
 
+router.use(authentication)
+
+router.use('/content', require('./content'))
+router.use('/tag', require('./tag'))
 
 router.use(errorHandler)
 

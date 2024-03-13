@@ -13,11 +13,11 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Tag.belongsToMany(models.Content, {
         through: models.ContentTag
-      });
+      })
     }
   }
   Tag.init({
-    title: DataTypes.STRING
+    name: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Tag',

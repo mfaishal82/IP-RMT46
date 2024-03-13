@@ -2,23 +2,20 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('ContenTags', {
+    await queryInterface.createTable('Tags', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      ContentId: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'Contents'
-        }
-      },
-      TagId: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'Tags'
+      name: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        unique: true,
+        validate: {
+          notNull: { msg: 'Name tag is required' },
+          notEmpty: { msg: 'Name tag is required' }
         }
       },
       createdAt: {
@@ -32,6 +29,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('ContenTags');
+    await queryInterface.dropTable('Tags');
   }
 };

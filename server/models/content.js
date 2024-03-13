@@ -11,24 +11,16 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Content.belongsTo(models.User);
+      Content.belongsTo(models.User)
       Content.belongsToMany(models.Tag, {
         through: models.ContentTag
-      });
+      })
     }
   }
   Content.init({
-    title: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notNull: { msg: 'Title is required' },
-        notEmpty: { msg: 'Title is required' }
-      }
-    },
-    UserId: DataTypes.STRING,
+    title: DataTypes.STRING,
     description: DataTypes.TEXT,
-    TagId: DataTypes.STRING
+    UserId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Content',

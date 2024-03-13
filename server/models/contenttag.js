@@ -11,8 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      ContentTag.belongsTo(models.Content, { foreignKey: 'ContentId' });
-      ContentTag.belongsTo(models.Tag, { foreignKey: 'TagId' });
+      ContentTag.belongsTo(models.Content, { foreignKey: 'ContentId' })
+      ContentTag.belongsTo(models.Tag, { foreignKey: 'TagId' })
     }
   }
   ContentTag.init({

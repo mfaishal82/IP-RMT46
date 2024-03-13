@@ -1,4 +1,5 @@
 const express = require('express')
+const errorHandler = require('../middlewares/errorHandler')
 const router = express.Router()
 
 router.get('/', (req, res) => {
@@ -8,5 +9,7 @@ router.get('/', (req, res) => {
 router.use('/auth', require('./auth'))
 router.use('/auth', require('./pub'))
 
+
+router.use(errorHandler)
 
 module.exports = router

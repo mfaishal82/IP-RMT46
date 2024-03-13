@@ -1,4 +1,4 @@
-const { comparepaswd } = require('../helpers/bcrypt')
+const { comparepaswd } = require('../middlewares/bcrypt')
 const { signToken } = require('../helpers/jwt')
 const { User } = require('../models')
 

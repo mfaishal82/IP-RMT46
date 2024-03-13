@@ -2,33 +2,23 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Contents', {
+    await queryInterface.createTable('ContenTags', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      title: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        validate: {
-          notNull: { msg: 'Title is required' },
-          notEmpty: { msg: 'Title is required' }
-        }
-      },
-      UserId: {
+      ContentId: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'Users'
+          model: 'Contents'
         }
       },
-      description: {
-        type: Sequelize.TEXT,
-        allowNull: false,
-        validate: {
-          notNull: { msg: 'Please fill description' },
-          notEmpty: { msg: 'Please fill description' }
+      TagId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Tags'
         }
       },
       createdAt: {
@@ -42,6 +32,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Contents');
+    await queryInterface.dropTable('ContenTags');
   }
 };

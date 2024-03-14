@@ -11,16 +11,29 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Content.belongsTo(models.User)
-      Content.belongsToMany(models.Tag, {
-        through: models.ContentTag
-      })
+      Content.belongsTo(models.User, { foreignKey: 'UserId' })
+      Content.belongsTo(models.Category, { foreignKey: 'CategoryId' })
     }
   }
   Content.init({
-    title: DataTypes.STRING,
-    description: DataTypes.TEXT,
-    UserId: DataTypes.INTEGER
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: { msg: 'Title is required' },
+        notEmpty: { msg: 'Title is required' }
+      }
+    },
+    description: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: { msg: 'Description is required' },
+        notEmpty: { msg: 'Description is required' }
+      }
+    },
+    UserId: DataTypes.INTEGER,
+    CategoryId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Content',

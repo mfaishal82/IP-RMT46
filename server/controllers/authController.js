@@ -1,4 +1,5 @@
-const { comparepaswd } = require('../middlewares/bcrypt')
+const { compareSync } = require('bcryptjs')
+const { comparepaswd, hashPasswd } = require('../helpers/bcrypt')
 const { signToken } = require('../helpers/jwt')
 const { User } = require('../models')
 
@@ -21,6 +22,7 @@ module.exports = class Controller {
 
     static async login(req, res, next) {
         try {
+            // console.log(req.body)
             const { email, password } = req.body
 
             if (!email) throw { status: 400, message: 'Email is required' }
@@ -31,17 +33,18 @@ module.exports = class Controller {
                     email
                 }
             })
-
-            if (!user || !comparepaswd(password, user.password)) {
+            console.log(user)
+            if (!user || !compareSync(password, user.password)) {
                 throw { status: 401, message: 'Invalid email or password' }
             }
 
             let token = signToken({
                 id: user.id
             })
-
+            // console.log(token)
             res.status(200).json({ access_token: token })
         } catch (error) {
+            // console.log(error)
             next(error)
         }
     }

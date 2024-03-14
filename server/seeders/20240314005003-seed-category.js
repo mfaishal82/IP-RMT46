@@ -12,7 +12,7 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-    await queryInterface.bulkInsert('Tags', [
+    await queryInterface.bulkInsert('Categories', [
       {
         name: "Tafsir of the Qur'an",
         createdAt: new Date(),
@@ -37,6 +37,11 @@ module.exports = {
         name: 'Hadith',
         createdAt: new Date(),
         updatedAt: new Date()
+      },
+      {
+        name: 'Other',
+        createdAt: new Date(),
+        updatedAt: new Date()
       }
     ])
   },
@@ -48,6 +53,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    await queryInterface.bulkDelete('Tags')
+    await queryInterface.bulkDelete('Categories')
   }
 };

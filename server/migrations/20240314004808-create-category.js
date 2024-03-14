@@ -2,33 +2,20 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Contents', {
+    await queryInterface.createTable('Categories', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      title: {
+      name: {
         type: Sequelize.STRING,
         allowNull: false,
+        unique: true,
         validate: {
-          notNull: { msg: 'Title is required' },
-          notEmpty: { msg: 'Title is required' }
-        }
-      },
-      description: {
-        type: Sequelize.TEXT,
-        allowNull: false,
-        validate: {
-          notNull: { msg: 'Please fill description' },
-          notEmpty: { msg: 'Please fill description' }
-        }
-      },
-      UserId: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'Users'
+          notNull: { msg: 'Category name is required' },
+          notEmpty: { msg: 'Category name is required' }
         }
       },
       createdAt: {
@@ -42,6 +29,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Contents');
+    await queryInterface.dropTable('Categories');
   }
 };

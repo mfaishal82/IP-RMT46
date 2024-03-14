@@ -19,15 +19,11 @@ module.exports = class Controller{
 
     static async createContent(req, res, next){
         try {
-            const {title, description} = req.body
+            const {title, description, CategoryId} = req.body
 
             // console.log(title, description)
 
-            let newContent = await Content.create({title, description, UserId: req.user.id}, {
-                include: {
-                    model: Tag
-                }
-            })
+            let newContent = await Content.create({title, description, CategoryId, UserId: req.user.id})
 
             console.log(newContent.dataValues)
             res.status(201).json(newContent)

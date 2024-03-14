@@ -13,6 +13,14 @@ module.exports = (error, req, res, next) => {
             status = 401
             message = 'Invalid Token'
             break
+        case 'Unauthorized':
+            status = 403
+            message = 'Forbiden access'
+            break
+        case 'Not Found':
+            status = 404
+            message = 'Data not found'
+            break
     }
 
     res.status(status).json({ message })

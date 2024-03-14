@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
 router.use('/auth', require('./auth'))
 router.use('/pub', require('./pub'))
 
-// router.use(authentication)
+router.use(authentication)
 
 router.use('/contents', require('./content'))
 router.use('/categories', require('./category'))

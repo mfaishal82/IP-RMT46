@@ -22,12 +22,12 @@ module.exports = class Controller {
             if (!language) {
                 language = `en`
                 // language translation: ar, en, fr, es, tr, ur, id, bs, ru, bn, zh, fa, hi, vi, si, ug
-                console.log(language)
+                // console.log(language)
             }
 
             const response = await axios.get(`https://hadeethenc.com/api/v1/hadeeths/one/?language=${language}&id=${id}`)
 
-            console.log(response.data)
+            // console.log(response.data)
 
             res.status(200).json(response.data)
         } catch (error) {

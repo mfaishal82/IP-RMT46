@@ -15,7 +15,7 @@ module.exports = class Controller {
                 email
             })
         } catch (error) {
-            console.log(error)
+            // console.log(error)
             next(error)
         }
     }
@@ -33,7 +33,7 @@ module.exports = class Controller {
                     email
                 }
             })
-            console.log(user)
+            // console.log(user)
             if (!user || !compareSync(password, user.password)) {
                 throw { status: 401, message: 'Invalid email or password' }
             }

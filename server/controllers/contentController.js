@@ -25,7 +25,7 @@ module.exports = class Controller{
 
             let newContent = await Content.create({title, description, CategoryId, UserId: req.user.id})
 
-            console.log(newContent.dataValues)
+            // console.log(newContent.dataValues)
             res.status(201).json(newContent)
         } catch (error) {
             next(error)

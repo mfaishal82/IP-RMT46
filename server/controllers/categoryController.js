@@ -49,7 +49,7 @@ module.exports = class Controller {
 
             let updtCategory = await category.update({name})
 
-            res.status(201).json(updtCategory)
+            res.status(200).json(updtCategory)
         } catch (error) {
             next(error)
         }
@@ -63,7 +63,7 @@ module.exports = class Controller {
 
             await category.destroy()
 
-            res.status(201).json({message: `${category.name} successfully deleted`})
+            res.status(200).json({message: `${category.name} successfully deleted`})
         } catch (error) {
             next(error)
         }

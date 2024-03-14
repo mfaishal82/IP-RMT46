@@ -1,3 +1,4 @@
+const { verifyToken } = require('../helpers/jwt')
 const { User } = require('../models')
 
 module.exports = {
@@ -21,7 +22,7 @@ module.exports = {
             }
 
 
-            if (req.user.role !== 'Admin') {
+            if (req.user.role !== 'admin') {
                 throw { name: "Unauthorized" }
             }
 

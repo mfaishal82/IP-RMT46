@@ -77,7 +77,7 @@ describe('PUT /contents/:id', () => {
 
             console.log(status)
             console.log(body)
-            expect(status).toBe(201)
+            expect(status).toBe(200)
         })
     })
 })
@@ -89,7 +89,7 @@ describe('DELETE /contents/:id', () => {
 
             console.log(status)
             console.log(body)
-            expect(status).toBe(201)
+            expect(status).toBe(200)
         })
     })
 })

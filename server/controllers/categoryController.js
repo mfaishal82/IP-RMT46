@@ -13,6 +13,18 @@ module.exports = class Controller {
         }
     }
 
+    static async createCategory(req, res, next){
+        try {
+            const { name } = req.body
+
+            let newCategory = await Category.create({name})
+
+            res.status(201).json(newCategory)
+        } catch (error) {
+            next(error)
+        }
+    }
+
     static async getCategoryById(req, res, next) {
         try {
             const id = req.params.id

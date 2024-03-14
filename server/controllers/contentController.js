@@ -31,4 +31,35 @@ module.exports = class Controller{
             next(error)
         }
     }
+
+    static async updateContentById(req, res, next){
+        try {
+            const id = req.params.id
+
+            let content = await Content.findByPk(id)
+
+            const { title, description, CategoryId } = req.body
+
+            await content.update({title, description, CategoryId, UserId: req.user.id})
+
+            res.status(201).json(content)
+
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    static async deleteContentById(req, res, next){
+        try {
+            const id = req.params.id
+
+            let content = await Content.findByPk(id)
+
+            await content.destroy()
+
+            res.status(201).json({message: `Deleted content ${content.title}`})
+        } catch (error) {
+            next(error)
+        }
+    }
 }

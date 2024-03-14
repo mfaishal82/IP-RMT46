@@ -42,7 +42,7 @@ module.exports = class Controller{
 
             await content.update({title, description, CategoryId, UserId: req.user.id})
 
-            res.status(201).json(content)
+            res.status(200).json(content)
 
         } catch (error) {
             next(error)
@@ -57,7 +57,7 @@ module.exports = class Controller{
 
             await content.destroy()
 
-            res.status(201).json({message: `Deleted content ${content.title}`})
+            res.status(200).json({message: `Deleted content ${content.title}`})
         } catch (error) {
             next(error)
         }

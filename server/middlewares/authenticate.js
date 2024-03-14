@@ -17,7 +17,8 @@ module.exports = {
             if(!user) throw { name: 'Unauthenticated' }
 
             req.user = {
-                id: user.id
+                id: user.id,
+                role: user.role
             }
 
             next()

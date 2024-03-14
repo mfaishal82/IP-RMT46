@@ -19,6 +19,7 @@ module.exports = {
         username: 'admin',
         email: 'admin@mail.com',
         password: hashPasswd('123456'),
+        role: 'admin',
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -26,6 +27,7 @@ module.exports = {
         username: 'user',
         email: 'user@mail.com',
         password: hashPasswd('123456'),
+        role: 'user',
         createdAt: new Date(),
         updatedAt: new Date()
       },

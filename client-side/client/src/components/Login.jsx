@@ -11,7 +11,7 @@ export default function Login() {
     const handleOnSubmit = async (e) => {
         e.preventDefault()
         try {
-            const response = await axios.post('http://localhost:3000/auth/login', {
+            const response = await axios.post('https://project.mf-cyberse.online/auth/login', {
                 email, password
             })
 
@@ -64,10 +64,10 @@ export default function Login() {
                             }}
                         />
                     </div>
-                    <div className="d-flex justify-content-center" style={{padding: '2%'}}>
+                    <div className="d-flex justify-content-center" style={{ padding: '2%' }}>
                         <div>
                             <button type="submit" className="btn btn-primary">
-                                Submit
+                                Log in
                             </button>
                         </div> <br />
                         <div>
@@ -76,9 +76,10 @@ export default function Login() {
                             </button></Link>
                         </div>
                     </div>
+                    Don't have an account? <Link to='/register'>Register First!</Link>
                     <hr />
                     <div className="d-flex justify-content-center">
-                    or
+                        or
                     </div>
                 </form>
             </div>

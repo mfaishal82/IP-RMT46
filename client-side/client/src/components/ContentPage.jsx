@@ -1,5 +1,6 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
+import Navbar from "./Navbar"
 
 
 export default function ContentPage(){
@@ -7,7 +8,7 @@ export default function ContentPage(){
 
     const fetchData = async () => {
         try {
-            const response = await axios.get('http://localhost:3000/contents', {
+            const response = await axios.get('https://project.mf-cyberse.online/contents', {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('access_token')}`
                 }
@@ -25,7 +26,7 @@ export default function ContentPage(){
 
     return(
         <>
-        
+        <Navbar/> 
         </>
     )
 }

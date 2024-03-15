@@ -5,7 +5,7 @@ module.exports = class Controller {
         try {
             const response = await axios.get('https://hadeethenc.com/api/v1/hadeeths/list/?language=en&category_id=5&page=1')
 
-            console.log(response.data)
+            // console.log(response.data)
 
             res.status(200).json(response.data)
 

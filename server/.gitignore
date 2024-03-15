@@ -1,2 +1,5 @@
 node_modules
 coverage
+IP-mf.pem
+.env
+notes.txt

@@ -4,21 +4,30 @@ import TextHome from "../components/TextHome";
 
 
 export default function Home() {
+    const bgStyle = {
+        // backgroundColor: 'lightblue',
+        // backgroundImage: 'url(../../public/bg1.png)',
+        // backgroundRepeat: 'no-repeat',
+        // backgroundSize: 'cover',
+        // height: '100% !important'
+    }
 
     return (
         <>
-            <div className="container-fluid">
-                <div className="row" style={{ margin: '3%' }}>
-                    <ImageHome />
-                    <div className="col-md-6">
-                        <TextHome />
+            <div style={bgStyle}>
+                <div className="container-fluid" style={{ marginTop: '15%' }}>
+                    <div className="row" style={{ margin: '3%' }}>
+                        <ImageHome />
+                        <div className="col-md-6 small-font-size " >
+                            <TextHome />
+                        </div>
                     </div>
-                </div>
-                <div className="row">
-                    <div className="col-md-12">
-                        <blockquote className="blockquote">
-                            <PrayerTime />
-                        </blockquote>
+                    <div className="row">
+                        <div className="col-md-12">
+                            <blockquote className="blockquote">
+                                <PrayerTime />
+                            </blockquote>
+                        </div>
                     </div>
                 </div>
             </div>

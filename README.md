@@ -1,5 +1,8 @@
 # IP-RMT46
 
+Link web: https://ip-mf-d750f.web.app
+API server: https://project.mf-cyberse.online/
+
 # API DOCS
 
 ## Rest API Endpoints

@@ -1,7 +1,7 @@
 import axios from "axios"
 import { useState } from "react"
 import { useNavigate } from "react-router"
-
+import { Link } from "react-router-dom"
 
 export default function Register() {
     // const [newUser, setNewUser] = useState({})
@@ -11,7 +11,7 @@ export default function Register() {
     const navigate = useNavigate()
 
     // console.log(newUser)
-    
+
     const handleOnSubmit = async (e) => {
         e.preventDefault()
         try {
@@ -31,7 +31,7 @@ export default function Register() {
         <>
             <div className="d-flex justify-content-center" style={{ marginTop: '12%' }}>
                 <form onSubmit={handleOnSubmit}>
-                <div className="mb-3">
+                    <div className="mb-3">
                         <label htmlFor="exampleInputUsername1" className="form-label">
                             Username
                         </label>
@@ -44,7 +44,7 @@ export default function Register() {
                             name="username"
                             onChange={(e) => {
                                 setUsername(e.target.value)
-                                console.log({username})
+                                console.log({ username })
                             }}
                         />
                     </div>
@@ -61,7 +61,7 @@ export default function Register() {
                             name="email"
                             onChange={(e) => {
                                 setEmail(e.target.value)
-                                console.log({email})
+                                console.log({ email })
                             }}
                         />
                     </div>
@@ -77,14 +77,15 @@ export default function Register() {
                             name="password"
                             onChange={(e) => {
                                 setPassword(e.target.value)
-                                console.log({password})
+                                console.log({ password })
                             }}
                         />
                     </div>
 
-                    <button type="submit" className="btn btn-outline-primary">
+                    <button style={{marginBottom: '2%'}} type="submit" className="btn btn-outline-primary">
                         Submit
-                    </button>
+                    </button> <br />
+                    Already have an account?<Link to='/login'>Log in here!</Link>
                 </form>
 
             </div>

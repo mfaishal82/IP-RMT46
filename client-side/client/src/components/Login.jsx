@@ -74,7 +74,7 @@ export default function Login() {
                                 Log in
                             </button>
                         </div> <br />
-                        <div>
+                        <div style={{margin: '3%'}}>
                             <Link to='/pub'><button className="btn btn-outline-danger">
                                 Cancel
                             </button></Link>

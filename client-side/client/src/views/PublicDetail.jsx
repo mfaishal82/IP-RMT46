@@ -42,7 +42,7 @@ export default function PublicDetail() {
                         <div className="media">
                             <img
                                 className="mr-3"
-                                alt="Bootstrap Media Preview"
+                                alt="..."
                                 src="../../../dist/logo.png"
                                 style={{ width: '5%' }}
                             />

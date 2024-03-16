@@ -6,7 +6,7 @@ export default function LogoutButton(){
 
     return(
         <>
-        <div className="d-flex align-items-end flex-column m-3">
+        <div className="d-flex align-items-end flex-column mr-5">
             <button className="btn btn-danger" onClick={(e) => {
                 localStorage.removeItem('access_token')
 

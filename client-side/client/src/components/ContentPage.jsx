@@ -2,10 +2,14 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import Navbar from "./Navbar"
 import LogoutButton from "./LogoutButton"
+import { Link, useParams } from "react-router-dom"
+import AddContent from "../views/AddContent"
+import AddContentButton from "./AddContentButton"
 
 
 export default function ContentPage() {
     const [data, setData] = useState([])
+    const params = useParams()
 
     const fetchData = async () => {
         try {
@@ -30,11 +34,15 @@ export default function ContentPage() {
         <>
             <Navbar />
             <LogoutButton />
-            <div className="container d-flex justify-content-center" style={{padding: '5%' }}>
+            <AddContentButton />
+            <div className="container" style={{ textAlign: 'center' }}>
+                <h3>Contents of Islamic Education</h3>
+            </div>
+            <div className="container justify-content-center" style={{ padding: '5%', alignSelf: 'center' }}>
                 <div className="col">
                     {data.map(each => (
 
-                        <div key={each.id} className="card m-3" style={{width: '50%', padding: '3%'}}>
+                        <div key={each.id} className="card m-3" style={{ width: '50%', padding: '3%' }}>
                             {/* <img src="..." className="card-img-top" alt="..." /> */}
                             <h4>{each.title}</h4>
                             <div className="card-body">
@@ -44,6 +52,22 @@ export default function ContentPage() {
                                 <i>Label Category: </i> <strong> {each.Category.name} </strong> <br />
                                 <i>Created by:</i> <u>{each.User.username}</u>
                             </div>
+                            <button onClick={async (e) => {
+                                e.preventDefault()
+                                try {
+                                    await axios.delete(`https://project.mf-cyberse.online/contents/${each.id}`, {
+                                        headers: {
+                                            Authorization: `Bearer ${localStorage.getItem('access_token')}`
+                                        }
+                                    })
+
+                                    setData(data.filter(item => item.id !== id))
+                                } catch (error) {
+                                    console.log(error)
+                                }
+                            }} className="btn btn-outline-danger">
+                                Delete
+                            </button>
                         </div>
 
                     ))}

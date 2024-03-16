@@ -6,6 +6,7 @@ import ContentPage from "./components/ContentPage"
 import Register from "./components/Register"
 import PublicDetail from "./views/PublicDetail"
 import AboutUs from "./views/AboutUs"
+import AddContent from "./views/AddContent"
 
 const router = createBrowserRouter(
     [
@@ -46,6 +47,10 @@ const router = createBrowserRouter(
         {
             path: '/about',
             element: <AboutUs />
+        },
+        {
+            path: '/addContent',
+            element: <AddContent />
         }
     ]
 )

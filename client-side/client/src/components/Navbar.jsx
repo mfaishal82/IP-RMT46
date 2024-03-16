@@ -6,44 +6,44 @@ import { Link } from "react-router-dom";
 
 export default function Navbar() {
 
-    const fetchData = async () => {
-        try {
-            await wbm.start();
+    // const fetchData = async () => {
+    //     try {
+    //         await wbm.start();
 
-            const contacts = [
-                { phone: '6285159001315', name: 'Bruno' },
-            ];
-            await wbm.send(contacts, 'Hey {{name}}');
-            // Hey Bruno
-            // Hey Will
+    //         const contacts = [
+    //             { phone: '6285159001315', name: 'Bruno' },
+    //         ];
+    //         await wbm.send(contacts, 'Hey {{name}}');
+    //         // Hey Bruno
+    //         // Hey Will
 
-            await wbm.send(['6285159001315'], 'Hey man');
-            // Hey man
-            // Hey man
+    //         await wbm.send(['6285159001315'], 'Hey man');
+    //         // Hey man
+    //         // Hey man
 
-            await wbm.end();
+    //         await wbm.end();
 
-            wbm.start({ showBrowser: true, qrCodeData: true, session: false })
-                .then(async qrCodeData => {
-                    console.log(qrCodeData); // show data used to generate QR Code
-                    await wbm.waitQRCode();
-                    // waitQRCode() is necessary when qrCodeData is true
-                    // ...
-                    await wbm.end();
-                }).catch(err => { console.log(err); });
-        } catch (err) {
-            console.log(err);
-        }
-    }
+    //         wbm.start({ showBrowser: true, qrCodeData: true, session: false })
+    //             .then(async qrCodeData => {
+    //                 console.log(qrCodeData); // show data used to generate QR Code
+    //                 await wbm.waitQRCode();
+    //                 // waitQRCode() is necessary when qrCodeData is true
+    //                 // ...
+    //                 await wbm.end();
+    //             }).catch(err => { console.log(err); });
+    //     } catch (err) {
+    //         console.log(err);
+    //     }
+    // }
 
-    useEffect(() => {
-        fetchData()
-    }, [])
+    // useEffect(() => {
+    //     fetchData()
+    // }, [])
 
 
     return (
         <>
-            <nav className="navbar navbar-expand-lg" style={{ backgroundColor: '#e3f2fd' }}>
+            <nav className="navbar navbar-expand-lg mb-3" style={{ backgroundColor: '#e3f2fd' }}>
                 <div className="container-fluid">
                     {/* <a className="navbar-brand" href="#">
                                     Navbar
@@ -108,7 +108,7 @@ export default function Navbar() {
                                             </a>
                                         </li> */}
                         </ul>
-                        <img src="../../public/wa_icon.png" alt="" style={{ width: '3%' }} />
+                        <a href="https://wa.me/6283876657601"><img src="../../public/wa_icon.png" alt="" style={{ width: '3%' }} /></a>
                         <form className="d-flex" role="search">
                             <input
                                 className="form-control me-2"

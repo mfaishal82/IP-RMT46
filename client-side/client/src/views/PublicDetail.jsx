@@ -28,7 +28,7 @@ export default function PublicDetail() {
     return (
         <>
             <Navbar />
-            <div className="container-fluid" style={{ margin: '5%' }}>
+            <div className="container d-flex" style={{ marginTop: '5%'}}>
                 <div className="row">
                     <div className="col-md-12">
                         <nav>
@@ -46,7 +46,7 @@ export default function PublicDetail() {
                                 src="../../public/logo.png"
                                 style={{ width: '5%' }}
                             />
-                            <div style={{ margin: '1%' }} className="media-body">
+                            <div style={{ margin: '1%', alignItems: 'center' }} className="media-body">
                                 <h5 className="mt-0">{data.title}</h5>
                                 <hr />
                                 <p>{data.hadeeth_ar}</p>

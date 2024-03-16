@@ -1,14 +1,19 @@
-const { Content, Category } = require('../models')
+const { Content, Category, User } = require('../models')
 
-module.exports = class Controller{
-    static async getContent(req, res, next){
+module.exports = class Controller {
+    static async getContent(req, res, next) {
         try {
-        let content = await Content.findAll({
-            include: {
-                model: Category,
-                // through: ContentTag
-            }
-        })
+            let content = await Content.findAll(
+                {
+                    include: {
+                        model: Category,
+                        // through: ContentTag
+                    },
+                    include: {
+                        model: User
+                    }
+
+                })
 
             res.status(200).json(content)
         } catch (error) {
@@ -17,13 +22,13 @@ module.exports = class Controller{
         }
     }
 
-    static async createContent(req, res, next){
+    static async createContent(req, res, next) {
         try {
-            const {title, description, CategoryId} = req.body
+            const { title, description, CategoryId } = req.body
 
             // console.log(title, description)
 
-            let newContent = await Content.create({title, description, CategoryId, UserId: req.user.id})
+            let newContent = await Content.create({ title, description, CategoryId, UserId: req.user.id })
 
             // console.log(newContent.dataValues)
             res.status(201).json(newContent)
@@ -32,7 +37,7 @@ module.exports = class Controller{
         }
     }
 
-    static async updateContentById(req, res, next){
+    static async updateContentById(req, res, next) {
         try {
             const id = req.params.id
 
@@ -40,7 +45,7 @@ module.exports = class Controller{
 
             const { title, description, CategoryId } = req.body
 
-            await content.update({title, description, CategoryId, UserId: req.user.id})
+            await content.update({ title, description, CategoryId, UserId: req.user.id })
 
             res.status(200).json(content)
 
@@ -49,7 +54,7 @@ module.exports = class Controller{
         }
     }
 
-    static async deleteContentById(req, res, next){
+    static async deleteContentById(req, res, next) {
         try {
             const id = req.params.id
 
@@ -57,7 +62,7 @@ module.exports = class Controller{
 
             await content.destroy()
 
-            res.status(200).json({message: `Deleted content ${content.title}`})
+            res.status(200).json({ message: `Deleted content ${content.title}` })
         } catch (error) {
             next(error)
         }

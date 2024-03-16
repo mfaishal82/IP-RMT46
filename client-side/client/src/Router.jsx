@@ -5,6 +5,7 @@ import Login from "./components/Login"
 import ContentPage from "./components/ContentPage"
 import Register from "./components/Register"
 import PublicDetail from "./views/PublicDetail"
+import AboutUs from "./views/AboutUs"
 
 const router = createBrowserRouter(
     [
@@ -41,6 +42,10 @@ const router = createBrowserRouter(
             loader: () => {
                 return !localStorage.getItem('access_token') ? redirect('/login') : null
             }
+        },
+        {
+            path: '/about',
+            element: <AboutUs />
         }
     ]
 )

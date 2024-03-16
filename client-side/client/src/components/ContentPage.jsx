@@ -28,18 +28,21 @@ export default function ContentPage() {
     return (
         <>
             <Navbar />
-            <div className="container-fluid">
-                <div className="row">
+            <div className="container d-flex justify-content-center" style={{padding: '5%' }}>
+                <div className="col">
                     {data.map(each => (
 
-                        <div className="col-md-12" key={each.id}>
-                        <h3>
-                            {each.title}
-                        </h3>
-                        <p>
-                            {each.description}
-                        </p> <span className="badge badge-primary">{each.Category.name}</span>
-                    </div>
+                        <div key={each.id} className="card m-5" style={{width: '50%', padding: '3%'}}>
+                            {/* <img src="..." className="card-img-top" alt="..." /> */}
+                            <h4>{each.title}</h4>
+                            <div className="card-body">
+                                <p className="card-text">
+                                    {each.description}
+                                </p>
+                                <i>Label Category: </i> <strong> {each.Category.name} </strong> <br />
+                                <i>Created by:</i> <u>{each.User.username}</u>
+                            </div>
+                        </div>
 
                     ))}
                 </div>

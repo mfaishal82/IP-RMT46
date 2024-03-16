@@ -7,6 +7,7 @@ export default function Login() {
     const navigate = useNavigate()
     const [email, setEmail] = useState([])
     const [password, setPassword] = useState([])
+    let errorMessage
 
     const handleOnSubmit = async (e) => {
         e.preventDefault()
@@ -20,7 +21,9 @@ export default function Login() {
 
             navigate('/contents')
         } catch (error) {
-            console.log(error)
+            // console.log(error)
+            errorMessage = error.response.data.message
+            console.log(errorMessage)
         }
     }
 
@@ -83,6 +86,7 @@ export default function Login() {
                     </div>
                 </form>
             </div>
+
         </>
     )
 }

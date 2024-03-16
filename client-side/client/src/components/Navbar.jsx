@@ -1,7 +1,44 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
+// import {wbm} from "wbm"
+
 
 
 export default function Navbar() {
+
+    const fetchData = async () => {
+        try {
+            await wbm.start();
+
+            const contacts = [
+                { phone: '6285159001315', name: 'Bruno' },
+            ];
+            await wbm.send(contacts, 'Hey {{name}}');
+            // Hey Bruno
+            // Hey Will
+
+            await wbm.send(['6285159001315'], 'Hey man');
+            // Hey man
+            // Hey man
+
+            await wbm.end();
+
+            wbm.start({ showBrowser: true, qrCodeData: true, session: false })
+                .then(async qrCodeData => {
+                    console.log(qrCodeData); // show data used to generate QR Code
+                    await wbm.waitQRCode();
+                    // waitQRCode() is necessary when qrCodeData is true
+                    // ...
+                    await wbm.end();
+                }).catch(err => { console.log(err); });
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    useEffect(() => {
+        fetchData()
+    }, [])
 
 
     return (
@@ -71,6 +108,7 @@ export default function Navbar() {
                                             </a>
                                         </li> */}
                         </ul>
+                        <img src="../../public/wa_icon.png" alt="" style={{ width: '3%' }} />
                         <form className="d-flex" role="search">
                             <input
                                 className="form-control me-2"

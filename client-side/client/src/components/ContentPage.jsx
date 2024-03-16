@@ -1,6 +1,7 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import Navbar from "./Navbar"
+import LogoutButton from "./LogoutButton"
 
 
 export default function ContentPage() {
@@ -28,11 +29,12 @@ export default function ContentPage() {
     return (
         <>
             <Navbar />
+            <LogoutButton />
             <div className="container d-flex justify-content-center" style={{padding: '5%' }}>
                 <div className="col">
                     {data.map(each => (
 
-                        <div key={each.id} className="card m-5" style={{width: '50%', padding: '3%'}}>
+                        <div key={each.id} className="card m-3" style={{width: '50%', padding: '3%'}}>
                             {/* <img src="..." className="card-img-top" alt="..." /> */}
                             <h4>{each.title}</h4>
                             <div className="card-body">

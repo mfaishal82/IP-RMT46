@@ -25,23 +25,30 @@ export default function Public() {
     return (
         <>
             <Navbar />
-            <div className="container-fluid">
+            <div className="container">
                 {data.map(each => (
-                    <div key={each.id} className="row" style={{ marginTop: '10%', marginLeft: '4%', marginRight: '4%' }}>
-                        <div className="col-md-6">
-                            Title: <strong> {each.title} </strong>
-                        </div>
-                        <div className="col-md-6">
-                            Choose Translation:
-                            {each.translations.map((e, index) => (
-                                <Link key={index} to={`/pub/${each.id}/${e}`}>
-                                    <button className="btn btn-outline-info m-1">{e}</button>
-                                </Link>
-                            ))}
+                    <div key={each.id} className="col" style={{ marginTop: '10%', marginLeft: '4%', marginRight: '4%' }}>
+                        <div className="card ">
+                            <div className="card-body">
+
+                                <div className="col-md-6">
+                                    <p className="card-text">Title: <strong> {each.title} </strong> </p>
+                                </div>
+                                <div className="col-md-6">
+                                    Choose Translation: <br />
+                                    {each.translations.map((e, index) => (
+                                        <Link key={index} to={`/pub/${each.id}/${e}`}>
+                                            <button className="btn btn-outline-info m-1">{e}</button>
+                                        </Link>
+                                    ))}
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                 ))}
             </div>
+
         </>
     )
 }

@@ -108,7 +108,7 @@ export default function Navbar() {
                                             </a>
                                         </li> */}
                         </ul>
-                        <a href="https://wa.me/6283876657601"><img src="../../public/wa_icon.png" alt="" style={{ width: '3%' }} /></a>
+                        <a href="https://wa.me/6283876657601"><img src="../../../dist/wa_icon.png" alt="" style={{ width: '3%' }} /></a>
                         <form className="d-flex" role="search">
                             <input
                                 className="form-control me-2"

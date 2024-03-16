@@ -25,10 +25,13 @@ export default function Public() {
     return (
         <>
             <Navbar />
+            <div className="container" style={{textAlign: 'center', margin: '2%'}}>
+                <h2>List of Hadith  by Title</h2>
+            </div>
             <div className="container">
                 {data.map(each => (
-                    <div key={each.id} className="col" style={{ marginTop: '10%', marginLeft: '4%', marginRight: '4%' }}>
-                        <div className="card ">
+                    <div key={each.id} className="col" style={{padding: '2%', marginBottom: '2%', marginLeft: '4%', marginRight: '4%' }}>
+                        <div className="card " style={{padding: '2%'}}>
                             <div className="card-body">
 
                                 <div className="col-md-6">

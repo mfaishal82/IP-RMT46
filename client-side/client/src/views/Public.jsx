@@ -8,7 +8,7 @@ export default function Public() {
 
     const fetchData = async () => {
         try {
-            const response = await axios.get('http://localhost:3000/pub')
+            const response = await axios.get('https://project.mf-cyberse.online/pub')
 
             console.log(response.data.data)
 
@@ -26,12 +26,21 @@ export default function Public() {
         <>
             <Navbar />
             <div className="container-fluid">
-
-                <div className="row" style={{ marginTop: '10%', marginLeft: '4%', marginRight: '4%' }}>
-                    <div className="col-md-6">TEST</div>
-                    <div className="col-md-6">TEST TOO</div>
-                </div>
-
+                {data.map(each => (
+                    <div key={each.id} className="row" style={{ marginTop: '10%', marginLeft: '4%', marginRight: '4%' }}>
+                        <div className="col-md-6">
+                            Title: <strong> {each.title} </strong>
+                        </div>
+                        <div className="col-md-6">
+                            Choose Translation:
+                            {each.translations.map((e, index) => (
+                                <Link key={index} to={`/pub/${each.id}/${e}`}>
+                                    <button className="btn btn-outline-info m-1">{e}</button>
+                                </Link>
+                            ))}
+                        </div>
+                    </div>
+                ))}
             </div>
         </>
     )

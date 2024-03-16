@@ -4,6 +4,7 @@ import Public from "./views/Public"
 import Login from "./components/Login"
 import ContentPage from "./components/ContentPage"
 import Register from "./components/Register"
+import PublicDetail from "./views/PublicDetail"
 
 const router = createBrowserRouter(
     [
@@ -15,6 +16,10 @@ const router = createBrowserRouter(
         {
             path: '/pub',
             element: <Public />
+        },
+        {
+            path: '/pub/:id/:language',
+            element: <PublicDetail />
         },
         {
             path: '/register',

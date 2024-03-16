@@ -6,7 +6,7 @@ export default function AboutUs() {
     return (
         <>
             <Navbar />
-            <div className="container">
+            <div className="container mt-5 p-5">
                 <h2>About Us</h2>
                 <p>
                     Welcome to our website! We are a team of passionate individuals dedicated to providing high-quality products/services and excellent customer experiences.

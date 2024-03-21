@@ -9,6 +9,7 @@ import AddContentButton from "./AddContentButton"
 
 export default function ContentPage() {
     const [data, setData] = useState([])
+    const [edit, setEdit] = useState({})
     const params = useParams()
 
     const fetchData = async () => {
@@ -24,6 +25,10 @@ export default function ContentPage() {
         } catch (error) {
             console.log(error)
         }
+    }
+
+    const fetchData2 = async () => {
+        const response = await axios.get(`https://ip-mf-d750f.web.app/contents/${params.id}`)
     }
 
     useEffect(() => {
@@ -52,6 +57,9 @@ export default function ContentPage() {
                                 <i>Label Category: </i> <strong> {each.Category.name} </strong> <br />
                                 <i>Created by:</i> <u>{each.User.username}</u>
                             </div>
+                            <Link to={`/edit/${each.id}`} className="btn btn-outline-warning">
+                                Edit content
+                            </Link>
                             <button onClick={async (e) => {
                                 e.preventDefault()
                                 try {

@@ -7,6 +7,7 @@ import Register from "./components/Register"
 import PublicDetail from "./views/PublicDetail"
 import AboutUs from "./views/AboutUs"
 import AddContent from "./views/AddContent"
+import EditPage from "./components/EditPage"
 
 const router = createBrowserRouter(
     [
@@ -45,8 +46,11 @@ const router = createBrowserRouter(
             }
         },
         {
-            path: '/about',
-            element: <AboutUs />
+            path: '/edit/:id',
+            element: <EditPage />,
+            loader: () => {
+                return !localStorage.getItem('access_token') ? redirect('/login') : null
+            }
         },
         {
             path: '/addContent',

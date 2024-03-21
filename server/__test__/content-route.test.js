@@ -42,6 +42,7 @@ const data2 = {
 
 let access_token
 let idParams = 1
+let wrongId = 99
 
 describe('GET /contents', () => {
     describe('Success', () => {
@@ -87,9 +88,17 @@ describe('DELETE /contents/:id', () => {
         test('Should return status 201 when success delete content', async () => {
             let { status, body } = await request(app).delete(`/contents/${idParams}`).set('Authorization', `Bearer ${access_token}`).send(data1)
 
-            console.log(status)
-            console.log(body)
+            // console.log(status)
+            // console.log(body)
             expect(status).toBe(200)
+        })
+    })
+
+    describe('Failure', () => {
+        test('Should return status 404 when delete id and its not found', async () => {
+            let {status, body} = await request(app).delete(`/contents/${wrongId}`).set('Authorization', `Bearer ${access_token}`).send(data1)
+
+            expect(status).toBe(404)
         })
     })
 })

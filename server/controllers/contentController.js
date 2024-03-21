@@ -22,6 +22,27 @@ module.exports = class Controller {
         }
     }
 
+    static async getContentById(req, res, next) {
+        try {
+            const id = req.params.id
+
+            const content = await Content.findByPk(id, {
+                include: [
+                    {
+                        model: User
+                    },
+                    {
+                        model: Category
+                    }
+                ]
+            })
+
+            res.status(200).json(content)
+        } catch (error) {
+            next(error)
+        }
+    }
+
     static async createContent(req, res, next) {
         try {
             const { title, description, CategoryId } = req.body

@@ -44,7 +44,7 @@ export default function PrayerTime() {
     let minutesLeft = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
 
     // console.log(new Date().toLocaleTimeString(['id-ID'], { hour: "2-digit", minute: "2-digit" }))
-    // console.log(time.Maghrib)
+    console.log(time.Maghrib)
 
     // console.log(time.Maghrib - new Date().toLocaleTimeString(['id-ID'], { hour: "2-digit", minute: "2-digit" }))
 

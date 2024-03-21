@@ -5,17 +5,17 @@ import TextHome from "../components/TextHome";
 
 export default function Home() {
     const bgStyle = {
-        // backgroundColor: 'lightblue',
-        // backgroundImage: 'url(../../public/bg1.png)',
-        // backgroundRepeat: 'no-repeat',
-        // backgroundSize: 'cover',
-        // height: '100% !important'
+        backgroundColor: 'lightblue',
+        backgroundImage: 'url(/bg1.png)',
+        backgroundRepeat: 'repeat',
+        backgroundSize: 'cover',
+        height: '100% !important',
     }
 
     return (
         <>
-            <div style={bgStyle}>
-                <div className="container-fluid" style={{ marginTop: '15%' }}>
+            {/* <div style={bgStyle} className="container-fluid d-flex"> */}
+                <div className="container" style={{ marginTop: '15%' }}>
                     <div className="row" style={{ margin: '3%' }}>
                         <ImageHome />
                         <div className="col-md-6 small-font-size " >
@@ -30,7 +30,7 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
-            </div>
+            {/* </div> */}
         </>
     )
 }

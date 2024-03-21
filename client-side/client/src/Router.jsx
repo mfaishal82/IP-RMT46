@@ -50,7 +50,10 @@ const router = createBrowserRouter(
         },
         {
             path: '/addContent',
-            element: <AddContent />
+            element: <AddContent />,
+            loader: () => {
+                return !localStorage.getItem('access_token') ? redirect('/login') : null
+            }
         }
     ]
 )

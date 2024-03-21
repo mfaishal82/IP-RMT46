@@ -42,8 +42,8 @@ export default function PublicDetail() {
                         <div className="media">
                             <img
                                 className="mr-3"
-                                alt="..."
-                                src="../../../dist/logo.png"
+                                alt=""
+                                src="/logo.png"
                                 style={{ width: '5%' }}
                             />
                             <div style={{ margin: '1%', alignItems: 'center' }} className="media-body">

@@ -26,7 +26,7 @@ export default function Public() {
         <>
             <Navbar />
             <div className="container" style={{textAlign: 'center', margin: '2%'}}>
-                <h2>List of Hadith  by Title</h2>
+                <h2>List Title of Hadith</h2>
             </div>
             <div className="container">
                 {data.map(each => (

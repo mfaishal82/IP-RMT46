@@ -71,7 +71,7 @@ export default function Navbar() {
                                     Contents
                                 </a>
                             </li>
-                            <li className="nav-item dropdown">
+                            {/* <li className="nav-item dropdown">
                                 <a
                                     className="nav-link dropdown-toggle"
                                     href="#"
@@ -101,14 +101,14 @@ export default function Navbar() {
                                         </Link>
                                     </li>
                                 </ul>
-                            </li>
+                            </li> */}
                             {/* <li className="nav-item">
                                             <a className="nav-link disabled" aria-disabled="true">
                                                 Disabled
                                             </a>
                                         </li> */}
                         </ul>
-                        <a href="https://wa.me/6283876657601"><img src="../../../dist/wa_icon.png" alt="..." style={{ width: '3%' }} /></a>
+                        <a href="https://wa.me/6283876657601"><img src="/wa_icon.png" alt="" style={{ width: '3%' }} /></a>
                         <form className="d-flex" role="search">
                             <input
                                 className="form-control me-2"

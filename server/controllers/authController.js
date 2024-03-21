@@ -2,6 +2,8 @@ const { compareSync } = require('bcryptjs')
 const { comparepaswd, hashPasswd } = require('../helpers/bcrypt')
 const { signToken } = require('../helpers/jwt')
 const { User } = require('../models')
+const { OAuth2Client } = require('google-auth-library');
+const client = new OAuth2Client();
 
 module.exports = class Controller {
     static async register(req, res, next) {
@@ -46,6 +48,37 @@ module.exports = class Controller {
         } catch (error) {
             // console.log(error)
             next(error)
+        }
+    }
+
+    static async googleLogin(req, res, next) {
+
+        // console.log(req.body);
+        const { googleToken } = req.body
+        try {
+            const ticket = await client.verifyIdToken({
+                idToken: googleToken,
+                audience: "858791502347-r5k521fubb95qopf2oue5m5ap13h2l7k.apps.googleusercontent.com",
+            })
+            const { email, given_name } = ticket.getPayload()
+            const password = Math.random().toString()
+            const [user, created] = await User.findOrCreate({
+                where: { email },
+                defaults: {
+                    given_name: username,
+                    email,
+                    password,
+                },
+                // hooks: false
+            })
+            // console.log({ user, created })
+
+            // create token
+            const access_token = signToken({ id: user.id })
+
+            res.status(200).json({ message: `Logged in as ${user.email}`, access_token })
+        } catch (err) {
+            next(err)
         }
     }
 }

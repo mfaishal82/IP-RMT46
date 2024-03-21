@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import { useNavigate } from "react-router"
 import { Link } from "react-router-dom"
 import FacebookLogin from "./FacebookLogin"
+import Navbar from "./Navbar"
 
 export default function Login() {
     const navigate = useNavigate()
@@ -28,9 +29,24 @@ export default function Login() {
         }
     }
 
+    useEffect(() => {
+        function handleCredentialResponse(response) {
+            console.log("Encoded JWT ID token: " + response.credential);
+        }
+            google.accounts.id.initialize({
+                client_id: "858791502347-r5k521fubb95qopf2oue5m5ap13h2l7k.apps.googleusercontent.com",
+                callback: handleCredentialResponse
+            });
+            google.accounts.id.renderButton(
+                document.getElementById("buttonDiv"),
+                { theme: "outline", size: "large" }  // customization attributes
+            );
+    }, [])
+
     return (
         <>
-            <div className="container d-flex justify-content-center" style={{ margin: '10%' }}>
+        <Navbar />
+            <div className="container d-flex justify-content-center" style={{ marginTop: '5%' }}>
                 <form onSubmit={handleOnSubmit}>
                     <div className="mb-3">
                         <label htmlFor="exampleInputEmail1" className="form-label">
@@ -49,7 +65,7 @@ export default function Login() {
                             }}
                         />
                         <div id="emailHelp" className="form-text">
-                            We'll never share your email with anyone else.
+                            Input your email.
                         </div>
                     </div>
                     <div className="mb-3">
@@ -67,23 +83,29 @@ export default function Login() {
                                 // console.log(password)
                             }}
                         />
+                        <div id="passwordHelp" className="form-text">
+                            Input your Password.
+                        </div>
                     </div>
-                    <div className="d-flex justify-content-center" style={{ padding: '2%' }}>
+                    <div className="container d-flex justify-content-center" style={{ padding: '2%' }}>
                         <div>
                             <button type="submit" className="btn btn-primary">
                                 Log in
                             </button>
-                        </div> <br />
-                        <div style={{margin: '3%'}}>
+                        </div>
+                        <div style={{ marginBottom: '3%', marginLeft: '2%' }}>
                             <Link to='/pub'><button className="btn btn-outline-danger">
                                 Cancel
                             </button></Link>
                         </div>
                     </div>
-                    Don't have an account? <Link to='/register'>Register First!</Link>
+                    Don't have an account? <Link to='/register'>Register First!</Link> <br />
+                    or Login with:
                     <hr />
-                    <div className="container" style={{textAlign: 'center'}}>
-                        or
+                    <div className="d-flex justify-content-center" style={{ alignItems: 'center' }}>
+                        <div id="buttonDiv"></div>
+                    </div>
+                    <div className="d-flex justify-content-center" style={{ alignItems: 'center' }}>
                         <FacebookLogin />
                     </div>
                 </form>

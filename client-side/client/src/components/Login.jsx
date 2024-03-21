@@ -29,23 +29,35 @@ export default function Login() {
         }
     }
 
+    const handleCredentialResponse = async ({ credential }) => {
+
+        const response = await axios.post("https://project.mf-cyberse.online/auth/google-login", {
+            googleToken: credential,
+        })
+
+        localStorage.setItem("access_token", response.data.access_token)
+
+        // successToast(data.message)
+        navigate("/contents")
+    }
+
     useEffect(() => {
-        function handleCredentialResponse(response) {
-            console.log("Encoded JWT ID token: " + response.credential);
-        }
-            google.accounts.id.initialize({
-                client_id: "858791502347-r5k521fubb95qopf2oue5m5ap13h2l7k.apps.googleusercontent.com",
-                callback: handleCredentialResponse
-            });
-            google.accounts.id.renderButton(
-                document.getElementById("buttonDiv"),
-                { theme: "outline", size: "large" }  // customization attributes
-            );
+        // function handleCredentialResponse(response) {
+        //     console.log("Encoded JWT ID token: " + response.credential);
+        // }
+        google.accounts.id.initialize({
+            client_id: "858791502347-r5k521fubb95qopf2oue5m5ap13h2l7k.apps.googleusercontent.com",
+            callback: handleCredentialResponse,
+        })
+        google.accounts.id.renderButton(
+            document.getElementById("buttonDiv"),
+            { theme: "outline", size: "large" }
+        )
     }, [])
 
     return (
         <>
-        <Navbar />
+            <Navbar />
             <div className="container d-flex justify-content-center" style={{ marginTop: '5%' }}>
                 <form onSubmit={handleOnSubmit}>
                     <div className="mb-3">

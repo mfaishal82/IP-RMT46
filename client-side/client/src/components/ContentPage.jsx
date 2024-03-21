@@ -27,10 +27,6 @@ export default function ContentPage() {
         }
     }
 
-    const fetchData2 = async () => {
-        const response = await axios.get(`https://ip-mf-d750f.web.app/contents/${params.id}`)
-    }
-
     useEffect(() => {
         fetchData()
     }, [])

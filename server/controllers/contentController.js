@@ -27,14 +27,11 @@ module.exports = class Controller {
             const id = req.params.id
 
             const content = await Content.findByPk(id, {
-                include: [
+                include: 
                     {
-                        model: User
-                    },
-                    {
-                        model: Category
+                        model: Category,
+                        attributes: ['name']
                     }
-                ]
             })
 
             res.status(200).json(content)

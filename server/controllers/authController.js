@@ -53,7 +53,7 @@ module.exports = class Controller {
 
     static async googleLogin(req, res, next) {
 
-        // console.log(req.body);
+        console.log(req.body);
         const { googleToken } = req.body
         try {
             const ticket = await client.verifyIdToken({
@@ -65,7 +65,7 @@ module.exports = class Controller {
             const [user, created] = await User.findOrCreate({
                 where: { email },
                 defaults: {
-                    given_name: username,
+                    username: given_name.toLowerCase(),
                     email,
                     password,
                 },

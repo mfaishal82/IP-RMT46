@@ -78,9 +78,14 @@ export default function EditPage() {
 
                         <div >
                             <label class="form-label">Description</label><br />
-                            <textarea rows="4" cols="50" name="comment" form="usrform" value={content.description} onChange={handleChange} />
+                            <textarea
+                                rows="4"
+                                cols="50"
+                                name="description"
+                                value={content.description}
+                                onChange={handleChange}
+                            />
                         </div>
-
                         <div class="mb-3">
                             <label class="form-label">Category</label><br />
                             <select name="CategoryId" value={content.CategoryId} onChange={handleChange}>

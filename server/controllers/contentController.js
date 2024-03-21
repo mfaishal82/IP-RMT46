@@ -5,13 +5,16 @@ module.exports = class Controller {
         try {
             let content = await Content.findAll(
                 {
-                    include: {
-                        model: Category,
-                        // through: ContentTag
-                    },
-                    include: {
-                        model: User
-                    }
+                    include: [
+                        {
+                            model: Category,
+                            attributes: ['name']
+                        },
+                        {
+                            model: User,
+                            attributes: ['id', 'username', 'email']
+                        }
+                    ]
 
                 })
 

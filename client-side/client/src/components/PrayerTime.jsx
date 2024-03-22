@@ -1,14 +1,19 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux'
+import { getPrayerTime } from '../prayerTime/prayerTimeSlice'
 
 export default function PrayerTime() {
     const [time, setTime] = useState({})
+    const prayerTime = useSelector((state) => state.prayerTimes.list)
+    const dispatch = useDispatch()
+    
 
     const fetchData = async () => {
         try {
             const options = {
                 method: 'GET',
-                url: 'https://prayer-times11.p.rapidapi.com/timingsByCity/16-03-2024',
+                url: `https://prayer-times11.p.rapidapi.com/timingsByCity/${new Date().toLocaleDateString()}`,
                 params: {
                     method: '5',
                     city: 'Jakarta',
@@ -50,6 +55,7 @@ export default function PrayerTime() {
 
     useEffect(() => {
         fetchData()
+        dispatch(getPrayerTime())
     }, [])
 
     return (
